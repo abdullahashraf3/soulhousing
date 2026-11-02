@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soul Housing | Your Dream Home Awaits</title>
+<meta name="description" content="Soul Housing – real estate consultants. Call +91 93108 82585 or +91 93107 01630.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#d9b25f;--gold-soft:#e8c98a}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{font-family:'Montserrat',sans-serif;color:#fff;background:#14243f;min-height:100vh;overflow-x:hidden}
+
+  /* Background: drawn fallback → your photo → tint */
+  .bg,.bg svg,.photo,.tint{position:fixed;inset:0;width:100%;height:100%}
+  .photo{background:url('building.jpg') center/cover no-repeat}
+  .tint{background:radial-gradient(ellipse at center,rgba(20,30,60,.35) 0%,rgba(20,28,55,.6) 100%)}
+
+  .rera{position:fixed;top:28px;right:34px;z-index:3;text-align:right}
+  .rera small{display:block;font-size:10px;font-weight:600;letter-spacing:2px;color:var(--gold);opacity:.85}
+  .rera strong{font-size:14px;font-weight:700;color:var(--gold-soft);letter-spacing:.3px}
+
+  main{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:90px 16px 40px}
+
+  .logo{display:flex;align-items:center;gap:14px;font-family:'Playfair Display',serif;
+    font-size:clamp(26px,3.4vw,40px);color:var(--gold-soft)}
+  .logo svg{width:clamp(38px,4vw,52px);height:auto}
+
+  h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(46px,7vw,92px);
+    line-height:1.05;margin-top:28px;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+  .rule{width:110px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 22px}
+  .tagline{font-size:clamp(14px,1.5vw,19px);font-weight:400;letter-spacing:3px}
+
+  .contact{margin-top:64px}
+  .contact h2{font-size:12px;font-weight:700;letter-spacing:3.5px;color:var(--gold);margin-bottom:18px}
+  .contact a{display:block;color:#fff;text-decoration:none;font-size:clamp(16px,1.6vw,20px);
+    font-weight:500;letter-spacing:1px;padding:7px 0;transition:color .2s}
+  .contact a:hover{color:var(--gold-soft)}
+
+  @media(max-width:600px){
+    .rera{top:16px;right:16px}.rera strong{font-size:12px}
+    .tagline{letter-spacing:2px}
+  }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><svg id="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"></svg></div>
+<div class="photo"></div>
+<div class="tint"></div>
+
+<div class="rera"><small>HRERA REG. NO.</small><strong>HRERA-PKL-REA-518-2021</strong></div>
+
+<main>
+  <div class="logo">
+    <svg viewBox="0 0 40 48" fill="none" stroke="#d9b25f" stroke-width="2.2" stroke-linejoin="round">
+      <path d="M3 46V18L20 3l17 15v28z"/><path d="M13 46V24l10-8v30"/>
+    </svg>
+    Soul Housing
+  </div>
+
+  <h1>Soul Housing</h1>
+  <div class="rule"></div>
+  <div class="tagline">Your Dream Home Awaits</div>
+  <div class="tagline">Website Under Maintenance</div>
+
+  <section class="contact">
+    <h2>CONTACT US</h2>
+    <a href="tel:+919310882585">+91 93108 82585</a>
+    <a href="tel:+919310701630">+91 93107 01630</a>
+  </section>
+</main>
+
+<script>
+/* Fallback: looking-up glass facade, shown only if building.jpg is missing */
+(function(){
+  const NS='http://www.w3.org/2000/svg',s=document.getElementById('scene');
+  const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+  s.innerHTML='<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7f93c4"/><stop offset=".55" stop-color="#3f6ea8"/><stop offset="1" stop-color="#2a4f86"/></linearGradient>'+
+    '<radialGradient id="glow" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#9fc3e8" stop-opacity=".45"/><stop offset="1" stop-color="#9fc3e8" stop-opacity="0"/></radialGradient></defs>';
+  s.appendChild(el('rect',{width:1600,height:900,fill:'url(#g)'}));
+  s.appendChild(el('rect',{width:1600,height:900,fill:'url(#glow)'}));
+  const g=el('g',{stroke:'#18213d',fill:'none','stroke-linejoin':'miter'});
+  // upward chevrons, spacing grows toward the viewer
+  let y=40,step=28;
+  for(let i=0;i<34;i++){
+    const w=4+i*0.35;
+    g.appendChild(el('polyline',{points:`-200,${y+620} 800,${y-60} 1800,${y+620}`,'stroke-width':w}));
+    y+=step;step*=1.07;
+  }
+  // mullions fanning from a high centre point
+  for(let k=-12;k<=12;k++){
+    if(k===0)continue;
+    g.appendChild(el('line',{x1:800,y1:-300,x2:800+k*150,y2:950,'stroke-width':2+Math.abs(k)*0.35,opacity:.85}));
+  }
+  s.appendChild(g);
+  s.appendChild(el('line',{x1:800,y1:-300,x2:800,y2:950,stroke:'#18213d','stroke-width':6}));
+})();
+</script>
+</body>
+</html>
